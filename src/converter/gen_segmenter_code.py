@@ -61,11 +61,15 @@ def ReadPOSID(id_file, special_pos_file):
 
   max_id = max_id + 1
   for line in open(special_pos_file, "r"):
-    if len(line) <= 1 or line[0] == '#':
+    if len(line.strip()) <= 1 or line[0] == '#':
       continue
     fields = line.split()
-    pos[fields[0]] = ("%d" % max_id)
-    max_id = max_id + 1
+    if len(fields)>0:
+       pos[fields[0]] = ("%d" % max_id)
+       max_id = max_id + 1
+    else:
+        print(fields)
+        print("end max_id")
 
   return pos
 
@@ -118,8 +122,13 @@ def main():
   print HEADER % (len(pos.keys()), len(pos.keys()))
 
   for line in open(sys.argv[3], "r"):
-    if len(line) <= 1 or line[0] == '#':
+    if len(line.strip()) <= 1 or line[0] == '#':
       continue
+    parts = line.split()
+    if len(parts) < 3:
+       print(parts)
+       print("split error not 3")
+       continue
     (l, r, result) = line.split()
     result = result.lower()
     lcond = GetRange(pos, l, "rid") or "true";

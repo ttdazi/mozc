@@ -80,3 +80,13 @@ Public Domain.  See the comment in
 
 UNICODE, INC. LICENSE AGREEMENT.
 See each file header for details.
+
+
+
+### 注意事项
+
+​	docker文件需要修改，最好用已经配置好的docker文件，并且需要添加代理，拉取代码
+
+​    环境中需要修改python脚本，解决空的问题，如果不想编译直接用编译好的，out目录
+
+​    编译分支一定要使用当前分支，不然最新的分支没有了android编译选项
